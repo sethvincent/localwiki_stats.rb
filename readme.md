@@ -4,11 +4,11 @@ it might be a good starting point for writing a wrapper ruby library for the loc
 
 ### usage:
 
-_clone the repository:_  
+*clone the repository:*  
 ````git clone https://github.com/sethvincent/localwiki_stats.rb.git````
 
-_run bundle to grab the dependencies:_  
+*run bundle to grab the dependencies:*  
 ````bundle install````
     
-_run the script:_  
+*run the script:*  
 ````ruby localwiki_stats.rb````
