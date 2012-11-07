@@ -43,7 +43,11 @@ race_for_reuse_localwikis = [ "miamiwiki.org",
                               "conway.localwiki.org", 
                               "198.74.52.32", 
                               "arborwiki.org", 
-                              "wiki.openatlanta.net"
+                              "wiki.openatlanta.net",
+                              "olywiki.org",
+                              "bmorepipeline.org",
+                              "wikikc.com",
+                              "toledowiki.net"
                             ]
 
 
