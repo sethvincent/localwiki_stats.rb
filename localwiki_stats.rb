@@ -33,8 +33,8 @@ def get_wiki_stats(base_url)
   end
 end
 
-localwiki_installs_without_api = ["wikislo.org"]
-race_for_reuse_localwikis = [ "miamiwiki.org", 
+race_for_reuse_localwikis = [ "wikislo.org",
+                              "miamiwiki.org", 
                               "oaklandwiki.org", 
                               "saltlakewiki.org", 
                               "seattlewiki.net", 
