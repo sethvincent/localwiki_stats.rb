@@ -8,10 +8,10 @@ require 'pp'
 # base_url is formatted as http://[url-to-wiki]/[thing-you-want]&format=json
 # format=jason is the default
 def wiki_get_request(base_url, resource)
-  response = RestClient.get 'http://' + base_url + resource + '&format=json'
-  json = StringIO.new(response.body)
-  parser = Yajl::Parser.new
-  parser.parse(json)
+    response = RestClient.get 'http://' + base_url + resource + '&format=json'
+    json = StringIO.new(response.body)
+    parser = Yajl::Parser.new
+    parser.parse(json)
 end
 
 def get_resource(content_type, limit=0, filters="")
@@ -48,13 +48,13 @@ race_for_reuse_localwikis = [ "wikislo.org",
                               "burlingtonwiki.org", 
                               "cuwiki.net", 
                               "conway.localwiki.org", 
-                              "198.74.52.32", 
-                              "arborwiki.org", 
-                              "wiki.openatlanta.net",
+                              "beta.viget.org", 
+                              "atlanta.georgiawiki.org",
                               "olywiki.org",
                               "bmorepipeline.org",
                               "wikikc.com",
-                              "toledowiki.net"
+                              "toledowiki.net",
+                              "arborwiki.org"
                             ]
 
 # for each localwiki in the Race for Reuse campaign, get it's stats and print to console
