@@ -59,5 +59,11 @@ race_for_reuse_localwikis = [ "wikislo.org",
 
 # for each localwiki in the Race for Reuse campaign, get it's stats and print to console
 race_for_reuse_localwikis.each do |wiki|
-  get_wiki_stats(wiki)
+  begin
+    get_wiki_stats(wiki)
+  rescue Errno::ETIMEDOUT => timeout
+    puts "\"#{wiki}\" timed out."
+  rescue => e
+    puts "\"#{wiki}\" returned the error: #{e.message}."
+  end
 end
