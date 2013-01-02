@@ -1,6 +1,5 @@
 require 'rest_client'
 require 'yajl'
-require 'pp'
 
 # LocalWiki API doc:
 # http://localwiki.readthedocs.org/en/latest/api.html
@@ -31,10 +30,11 @@ end
 
 def get_wiki_stats(base_url)
   @base_url = base_url
-  pp get_wiki_name(base_url)
+  puts get_wiki_name(base_url)
   resource_types = ["page", "user", "file", "map"]
   resource_types.each do |resource|
-    pp resource.to_s + "s: " + total_resources(resource).to_s
+    label = "  #{resource.to_s}s: "
+    puts "#{label[0..7]} #{total_resources(resource).to_s.rjust(6)}"
   end
 end
 
@@ -59,5 +59,11 @@ race_for_reuse_localwikis = [ "wikislo.org",
 
 # for each localwiki in the Race for Reuse campaign, get it's stats and print to console
 race_for_reuse_localwikis.each do |wiki|
-  get_wiki_stats(wiki)
+  begin
+    get_wiki_stats(wiki)
+  rescue Errno::ETIMEDOUT => timeout
+    puts "#{wiki} timed out."
+  rescue => e
+    puts "#{wiki} returned the error: #{e.message}."
+  end
 end
