@@ -3,8 +3,6 @@ require 'local_wiki'
 # LocalWiki API doc:
 # http://localwiki.readthedocs.org/en/latest/api.html
 
-# Reference:
-# http://brigade.codeforamerica.org/pages/race-for-reuse
 localwikis = [ "wikislo.org",
                 "miamiwiki.org",
                 "oaklandwiki.org",
@@ -40,12 +38,18 @@ def get_wiki_stats(base_url)
 end
 
 # for each localwiki, get it's stats and print to console
-localwikis.each do |wiki|
-  begin
-    get_wiki_stats(wiki)
-  rescue Errno::ETIMEDOUT => timeout
-    puts "#{wiki} timed out."
-  rescue => e
-    puts "#{wiki} returned the error: #{e.message}."
+site_threads = localwikis.collect do |wiki|
+  Thread.new do
+    begin
+      sleep 0.01
+      get_wiki_stats(wiki)
+    rescue Errno::ETIMEDOUT => timeout
+      puts "#{wiki} timed out."
+    rescue => e
+      puts "#{wiki} returned the error: #{e.message}."
+    end
   end
 end
+
+puts "Collecting stats on #{site_threads.count} wikis ..."
+site_threads.collect &:join
