@@ -1,4 +1,4 @@
-require 'local_wiki'
+require 'localwiki_client'
 
 # LocalWiki API doc:
 # http://localwiki.readthedocs.org/en/latest/api.html
@@ -21,7 +21,7 @@ localwikis = [ "wikislo.org",
               ]
 
 def get_wiki_stats(base_url)
-  wiki = LocalWiki.new base_url
+  wiki = LocalwikiClient.new base_url
   site_thread = Thread.current
   site_thread[:output] = []
   wiki_name = wiki.site_name << "\n"
