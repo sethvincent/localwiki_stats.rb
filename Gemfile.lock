@@ -1,7 +1,11 @@
+PATH
+  remote: ../localwiki.rb
+  specs:
+    localwiki (0.0.2)
+
 GEM
   remote: http://rubygems.org/
   specs:
-    localwiki (0.0.2)
     mime-types (1.19)
     rest-client (1.6.7)
       mime-types (>= 1.16)
@@ -10,5 +14,5 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  localwiki
+  localwiki!
   rest-client
