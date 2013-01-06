@@ -1,4 +1,3 @@
 source :rubygems
 
-gem 'rest-client'
-gem 'localwiki'
+gem 'localwiki_client', ">= 0.0.4"
